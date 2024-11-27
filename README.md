@@ -34,9 +34,44 @@ VarDB().flush_db() # to delete the variable db permanently
 ```
 # Example 2: List
 ```python
+import json
 the_list = [1,2,3,5,70]
-VarDB().store_var('the_list',the_list) 
+VarDB().store_var('the_list',the_list) #list
+
 the_out = VarDB().fetch_var('the_list')
+
+json_file  = json.dumps({
+                        "name": "John Doe",
+                        "age": 30,
+                        "isEmployed": True,
+                        "skills": ["Python", "Data Analysis", "Machine Learning"]
+                        }) #json                                                        
+VarDB().store_var('json_file',json_file)
+json_file_out = VarDB().fetch_var('json_file')
+
+print(json_file_out)
 print(the_out)
+>>> {"name": "John Doe", "age": 30, "isEmployed": true, "skills": ["Python", "Data Analysis", "Machine Learning"]}
 >>> [1, 2, 3, 5, 70]
 ```
+# Example 3: Class instance
+```python
+class Addnew():
+    def __init__(self,a,b):
+        self.a =a
+        self.b = b
+
+    def add(self):
+        return (self.a+self.b)
+    
+class_object = Addnew(1,2)
+VarDB().store_var('class_object',class_object)
+
+class_object_out = VarDB().fetch_var('class_object')
+print(class_object_out.add()) 
+>>> 3
+```
+> **Note:**  The current version of **_varibase_** requires class defination (**class Addnew** in the above case) to exist while calling back the class instance (**class_object** in the above case)
+
+
+
