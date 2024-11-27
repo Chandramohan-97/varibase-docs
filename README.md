@@ -32,3 +32,11 @@ the_req_dat_again = VarDB().fetch_var('the_req_dat') # get the variable from the
 VarDB().store_var('the_req_dat',the_main_sheet) # another variable will replace this key. Cannot have a duplicating key
 VarDB().flush_db() # to delete the variable db permanently
 ```
+# Example 2: List
+```python
+the_list = [1,2,3,5,70]
+VarDB().store_var('the_list',the_list) 
+the_out = VarDB().fetch_var('the_list')
+print(the_out)
+>>> [1, 2, 3, 5, 70]
+```
